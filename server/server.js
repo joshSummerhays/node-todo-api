@@ -73,7 +73,7 @@ app.delete('/todos/:id', authenticate, (req, res) => {
     if(!ObjectID.isValid(id)){
         return res.status(404).send('not a valid id');
     }
-    Todo.findByOneAndRemove({
+    Todo.findOneAndRemove({
         _id: id, 
         _creator: req.user
     }).then((todo) => {
